@@ -1,14 +1,39 @@
-import { Component } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { map } from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   jokeOftheDay = {
-    "id": "R7UfaahVfFd",
-    "joke": "My dog used to chase people on a bike a lot. It got so bad I had to take his bike away.",
-    "status": 200,
-    "date": "March 3, 2023"
+    "id": "",
+    "joke": "",
+    "date": ""
   };
+
+  constructor(private httpClient: HttpClient) { }
+
+  ngOnInit(): void {
+    this.getJoke();
+  }
+
+  getJoke() {
+    this.httpClient.get('https://icanhazdadjoke.com/', {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .pipe(map((data: any) => {
+        return {
+          id: data.id,
+          joke: data.joke,
+          date: new Date().toDateString()
+        };
+      }))
+      .subscribe((data: any) => {
+        this.jokeOftheDay = data;
+      });
+  }
 }

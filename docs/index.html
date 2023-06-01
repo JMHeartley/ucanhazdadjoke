@@ -8,6 +8,15 @@
 
 <body>
   <app-root></app-root>
-<script src="runtime.4c8dec0e47209d44.js" type="module"></script><script src="polyfills.090195bcb420ba72.js" type="module"></script><script src="scripts.b7cebc1258dbcca8.js" defer></script><script src="main.d9160ca194d64b27.js" type="module"></script>
+  <script>
+    let baseHref = '/';
+
+    if (window.location.hostname.includes('github.io') || window.location.hostname.includes('justinsportfol.io')) {
+      baseHref = '/ucanhazdadjoke/';
+    }
+
+    window['base-href'] = baseHref;
+  </script>
+<script src="runtime.4c8dec0e47209d44.js" type="module"></script><script src="polyfills.090195bcb420ba72.js" type="module"></script><script src="scripts.b7cebc1258dbcca8.js" defer></script><script src="main.0264616c1983676a.js" type="module"></script>
 
 </body></html>

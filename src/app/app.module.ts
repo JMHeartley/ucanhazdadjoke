@@ -26,7 +26,7 @@ const routes: Routes = [
   providers: [{
     provide: APP_BASE_HREF,
     useFactory: () => {
-      if (window.location.hostname.includes('github.io')) {
+      if (window.location.hostname.includes('github.io') || window.location.hostname.includes('justinsportfol.io')) {
         return '/ucanhazdadjoke/';
       }
       return '/';

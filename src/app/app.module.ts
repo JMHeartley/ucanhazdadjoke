@@ -23,10 +23,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [{
-    provide: APP_BASE_HREF,
-    useValue: window['base-href']
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
